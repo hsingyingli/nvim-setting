@@ -65,4 +65,9 @@ nvim_tree.setup {
     number = false,
     relativenumber = false,
   },
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    }
+  }
 }

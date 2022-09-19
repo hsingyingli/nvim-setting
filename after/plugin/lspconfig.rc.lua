@@ -4,7 +4,7 @@ if (not status) then return end
 local protocol = require('vim.lsp.protocol')
 
 local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<S-e>', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
@@ -92,4 +92,10 @@ nvim_lsp.cssls.setup{
   capabilities = capabilities,
 }
 
+
+vim.diagnostic.config({
+  virtual_text = false
+})
+
+-- Show line diagnostics automatically in hover window
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
