@@ -1,5 +1,5 @@
 local keymap = vim.keymap
-
+local opts = { noremap = true, silent = true }
 keymap.set('n', 'x', '"_x')
 keymap.set('n', 'dw', 'vb"_d')
 
@@ -25,10 +25,4 @@ keymap.set('n', '<C-w>k', '<C-w>+')
 keymap.set('n', '<C-w>j', '<C-w>-')
 
 
--- nvim tree 
-keymap.set("n", "sf", ":NvimTreeToggle<cr>",  { noremap = true, silent = true })
-
--- telescope
-
-keymap.set("n", "ff", ":Telescope find_files<CR>", {noremap = true, silent = true})
-keymap.set("n", "fg", ":Telescope live_grep<CR>", {noremap = true, silent = true})
+keymap.set("n", "sf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)

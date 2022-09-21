@@ -17,23 +17,15 @@ packer.startup(function(use)
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'kyazdani42/nvim-web-devicons'
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
-  use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use 'folke/tokyonight.nvim' -- nvim dark theme
+  use 'ghifarit53/tokyonight-vim' -- nvim dark theme
   use "lukas-reineke/lsp-format.nvim" -- auto formatting
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  use "nvim-lua/popup.nvim"
+  use "nvim-lua/plenary.nvim"
 
   use {'mg979/vim-visual-multi', branch= 'master'} -- support vscode like multi cursor
   use 'L3MON4D3/LuaSnip'
