@@ -76,6 +76,5 @@ vim.keymap.set("n", "sf", function()
     hidden = true,
     grouped = true,
     initial_mode = "normal",
-    layout_config = {preview_cutoff = 1 }
   })
 end)

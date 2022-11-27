@@ -26,3 +26,8 @@ keymap.set('n', '<C-w>j', '<C-w>-')
 
 
 keymap.set("n", "sf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
+keymap.set("n", "<Return>", ":noh<Return>")
+
+-- New Outline
+
+keymap.set("n", "so", ":SymbolsOutline<Return>", {silent = true})

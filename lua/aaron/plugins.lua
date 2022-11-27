@@ -39,4 +39,5 @@ packer.startup(function(use)
     -- Uncomment next line if you want to follow only stable versions
     tag = "*"
   }
+  use 'simrat39/symbols-outline.nvim'
 end)

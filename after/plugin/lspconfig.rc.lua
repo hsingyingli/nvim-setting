@@ -67,10 +67,30 @@ protocol.CompletionItemKind = {
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
+---- Completion kinds
+--local servers = {
+	----"clangd",
+	--"tsserver",
+	--"pyright",
+	--"yamlls",
+	--"jsonls",
+  --"dockerls",
+  --"sqlls",
+	--"cssls",
+	--"html",
+  --"gopls"
+--}
+
+--for _, lsp in pairs(servers) do
+	--nvim_lsp[lsp].setup({
+		--on_attach = on_attach,
+		--capabilities = capabilities,
+	--})
+--end
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities
@@ -92,10 +112,30 @@ nvim_lsp.cssls.setup{
   capabilities = capabilities,
 }
 
+nvim_lsp.html.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.dockerls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.tailwindcss.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+nvim_lsp.jsonls.setup{}
+nvim_lsp.sqlls.setup{}
+
 
 vim.diagnostic.config({
   virtual_text = false
 })
+
+
 
 -- Show line diagnostics automatically in hover window
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
