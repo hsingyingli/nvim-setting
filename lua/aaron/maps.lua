@@ -29,5 +29,4 @@ keymap.set("n", "sf", "<cmd>lua require'telescope.builtin'.find_files(require('t
 keymap.set("n", "<Return>", ":noh<Return>")
 
 -- New Outline
-
 keymap.set("n", "so", ":SymbolsOutline<Return>", {silent = true})

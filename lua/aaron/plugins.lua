@@ -11,22 +11,22 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'neovim/nvim-lspconfig' -- LSP
+  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use "lukas-reineke/lsp-format.nvim"
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
-  use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-tree/nvim-web-devicons'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use 'ghifarit53/tokyonight-vim' -- nvim dark theme
-  use "lukas-reineke/lsp-format.nvim" -- auto formatting
+  use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
-
   use {'mg979/vim-visual-multi', branch= 'master'} -- support vscode like multi cursor
   use 'L3MON4D3/LuaSnip'
   use 'norcalli/nvim-colorizer.lua' -- color highlighter for Neovim
@@ -40,4 +40,5 @@ packer.startup(function(use)
     tag = "*"
   }
   use 'simrat39/symbols-outline.nvim'
+  
 end)
