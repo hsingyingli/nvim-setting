@@ -2,7 +2,6 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 keymap.set('n', 'x', '"_x')
 keymap.set('n', 'dw', 'vb"_d')
-
 -- New tab
 keymap.set('n', 'te', ':tabedit<Return>', { silent = true})
 keymap.set('n', '<S-Tab>', ':tabprev<Return>', {silent = true})
@@ -26,7 +25,8 @@ keymap.set('n', '<C-w>j', '<C-w>-')
 
 
 keymap.set("n", "sf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
-keymap.set("n", "<Return>", ":noh<Return>")
+keymap.set("n", "<C-e>", ":noh<Return>")
+
 
 -- New Outline
 keymap.set("n", "so", ":SymbolsOutline<Return>", {silent = true})

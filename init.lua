@@ -20,3 +20,4 @@ if is_win then
 end
 
 vim.cmd("runtime ./multi-cursor.vim")
+--vim.cmd("runtime ./rubocop.vim")

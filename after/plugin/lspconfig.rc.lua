@@ -18,10 +18,16 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  
+  if client.name == "eslint" then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end
 end
 
 
@@ -57,16 +63,55 @@ protocol.CompletionItemKind = {
 local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 nvim_lsp.flow.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.rust_analyzer.setup({
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  capabilities = capabilities,
+  settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
+
+nvim_lsp.tsserver.setup {
+  --on_attach = on_attach,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities
+}
+
+nvim_lsp.stylelint_lsp.setup {
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
+      -- other settings...
+    }
+  },
+}
+
+nvim_lsp.eslint.setup{
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
@@ -84,7 +129,11 @@ nvim_lsp.gopls.setup{
   capabilities = capabilities,
 }
 
-nvim_lsp.pyright.setup{
+nvim_lsp.astro.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+nvim_lsp.pylsp.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -104,6 +153,13 @@ nvim_lsp.dockerls.setup{
   capabilities = capabilities,
 }
 
+nvim_lsp.bufls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+nvim_lsp.ruby_ls.setup{
+  capabilities = capabilities,
+}
 nvim_lsp.jsonls.setup{}
 nvim_lsp.sqlls.setup{}
 

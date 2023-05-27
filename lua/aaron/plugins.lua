@@ -22,7 +22,7 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
+  use({ 'rose-pine/neovim', as = 'rose-pine' }) -- nvim theme
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use "nvim-lua/popup.nvim"
@@ -31,7 +31,7 @@ packer.startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'norcalli/nvim-colorizer.lua' -- color highlighter for Neovim
   use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim' -- For git blame & browse
+  --use 'dinhhuy258/git.nvim' -- For git blame & browse
   use 'lukas-reineke/indent-blankline.nvim' --  indentation guides to all lines
   use {
     "danymat/neogen",
@@ -40,5 +40,16 @@ packer.startup(function(use)
     tag = "*"
   }
   use 'simrat39/symbols-outline.nvim'
-  
+  use {'iamcco/markdown-preview.nvim'}
+  use {'vim-ruby/vim-ruby'}
+  use {'tpope/vim-rails'}
+  use 'ngmy/vim-rubocop'
+  use {
+      'laytan/tailwind-sorter.nvim',
+      requires = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
+      config = function() require('tailwind-sorter').setup() end,
+      run = 'cd formatter && npm i && npm run build',
+    }
+  use "folke/todo-comments.nvim"
+  use "sindrets/diffview.nvim" 
 end)
