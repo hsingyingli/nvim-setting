@@ -93,6 +93,18 @@ nvim_lsp.rust_analyzer.setup({
     }
 })
 
+nvim_lsp.solargraph.setup {
+  capabilities = capabilities,
+  settings = {
+    completion = true,
+    diagnostic = true,
+    folding = true,
+    references = true,
+    rename = true,
+    symbols = true,
+  }
+}
+
 nvim_lsp.tsserver.setup {
   --on_attach = on_attach,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -167,6 +179,12 @@ nvim_lsp.sqlls.setup{}
 vim.diagnostic.config({
   virtual_text = false
 })
+-- disable virtial text but it did not disable float text
+--vim.diagnostic.disable()
+
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

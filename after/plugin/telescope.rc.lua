@@ -78,3 +78,7 @@ vim.keymap.set("n", "sf", function()
     initial_mode = "normal",
   })
 end)
+
+vim.keymap.set('n', 'gsf', function() 
+  builtin.find_files()
+end)
