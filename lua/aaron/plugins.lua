@@ -23,6 +23,7 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use {'dracula/vim', as = 'dracula'}
+  use ({ 'projekt0n/github-nvim-theme' })
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use "nvim-lua/popup.nvim"
@@ -52,5 +53,5 @@ packer.startup(function(use)
     }
   use "folke/todo-comments.nvim"
   use "sindrets/diffview.nvim" 
-  use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
+  use 'averms/black-nvim'
 end)

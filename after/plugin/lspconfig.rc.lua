@@ -145,10 +145,40 @@ nvim_lsp.astro.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
 nvim_lsp.pylsp.setup{
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        -- formatter options
+        black = { enabled = true },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+
+        -- linter options
+        --pylint = { enabled = true, executable = "pylint" },
+        pyflakes = { enabled = true },
+        pycodestyle = { enabled = false },
+
+        -- type checker
+        pylsp_mypy = { enabled = false },
+
+        -- auto-completion options
+        jedi_completion = { fuzzy = true },
+
+        -- import sorting
+        pyls_isort = { enabled = true },
+      }
+    }
+  }
 }
+
+--nvim_lsp.pyright.setup{
+  --on_attach = on_attach,
+  --capabilities = capabilities,
+--}
 
 nvim_lsp.cssls.setup{
   on_attach = on_attach,
