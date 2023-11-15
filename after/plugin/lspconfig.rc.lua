@@ -199,9 +199,15 @@ nvim_lsp.bufls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
-nvim_lsp.ruby_ls.setup{
+--nvim_lsp.ruby_ls.setup{
+  --capabilities = capabilities,
+--}
+
+nvim_lsp.rubocop.setup{
+  on_attach = on_attach,
   capabilities = capabilities,
 }
+
 nvim_lsp.jsonls.setup{}
 nvim_lsp.sqlls.setup{}
 

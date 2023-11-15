@@ -11,6 +11,7 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'neovim/nvim-lspconfig' -- LSP
+  --use { 'neoclide/coc.nvim', branch='release'} 
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use "lukas-reineke/lsp-format.nvim"
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
@@ -22,8 +23,9 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use {'dracula/vim', as = 'dracula'}
-  use ({ 'projekt0n/github-nvim-theme' })
+  --use ({ 'projekt0n/github-nvim-theme' })
+  use 'Mofiqul/dracula.nvim'
+  --use "rebelot/kanagawa.nvim"
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use "nvim-lua/popup.nvim"
@@ -54,4 +56,9 @@ packer.startup(function(use)
   use "folke/todo-comments.nvim"
   use "sindrets/diffview.nvim" 
   use 'averms/black-nvim'
+  use {
+      'stevearc/conform.nvim',
+      config = function() require('conform').setup() end
+    }
+
 end)

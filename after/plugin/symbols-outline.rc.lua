@@ -1,5 +1,5 @@
-local opt = {
-  autofold_depth = 1,
-  auto_close = true
-}
-require("symbols-outline").setup(opt)
+--local opts = {
+  --auto_close = true,
+  --autofold_depth = 1,
+--}
+--require("symbols-outline").setup(opts)

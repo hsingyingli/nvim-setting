@@ -1,0 +1,17 @@
+{
+  "eslint.packageManager": "yarn",
+  "eslint.autoFixOnSave": true,
+  "eslint.format.enable": true,
+  "tailwindCSS.headwind.runOnSave": true,
+  "python.venvPath": "/Users/aaron/.local/share/virtualenvs",
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/Users/aaron/.local/share/virtualenvs/resume_parser-CmCWDgpF/bin/black",
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["python", "ruby"],
+  "snippets.ultisnips.pythonPrompt": false,
+  "cSpell.words": ["yourator", "openai", "pyright", "jsonable", "pydantic", "uvicorn"],
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true
+}
